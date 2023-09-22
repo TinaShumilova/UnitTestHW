@@ -63,6 +63,9 @@ public class CalculatorTest {
         * */
         assertThat(Calculator.calculatingDiscount(164.54, 20)).isEqualTo(144.54);
 
+        assertThatThrownBy(()->
+                Calculator.calculatingDiscount(1000,-10))
+                .isInstanceOf(ArithmeticException.class);
     }
 
 }
