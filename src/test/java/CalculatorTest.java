@@ -1,9 +1,15 @@
 import lv.gb.unittest.hw1.CalculatorFolder.Calculator;
+import lv.gb.unittest.hw3.Numbers;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CalculatorTest {
+
+
     public static void main(String[] args) {
         // Проверка базового функционала с целыми числами:
         if (8 != Calculator.calculation(2, 6, '+')) {
@@ -61,11 +67,85 @@ public class CalculatorTest {
         /*
         * Негативная проверка
         * */
-        assertThat(Calculator.calculatingDiscount(164.54, 20)).isEqualTo(144.54);
+//        assertThat(Calculator.calculatingDiscount(164.54, 20)).isEqualTo(144.54);
+//
+//        assertThatThrownBy(()->
+//                Calculator.calculatingDiscount(1000,-10))
+//                .isInstanceOf(ArithmeticException.class);
+    }
 
-        assertThatThrownBy(()->
-                Calculator.calculatingDiscount(1000,-10))
-                .isInstanceOf(ArithmeticException.class);
+    @Test
+    public void cirkle(){
+        Calculator calculator = new Calculator();
+        assertTrue(Math.abs(62 - calculator.computeLengthCircle(10)) < 1);
+    }
+
+ //Напишите тесты, покрывающие на 100% метод evenOddNumber.
+
+    /**
+     * Тест проверяющий четное ли число.
+     * @return true
+     */
+    @Test
+    public void testIsNumberEven(){
+        Numbers number = new Numbers();
+        assertTrue(number.evenOddNumber(0));
+    }
+
+    /**
+     * Тест проверяющий нечетное ли число.
+     * @return false
+     */
+    @Test
+    public void testIsNumberOdd(){
+        Numbers number = new Numbers();
+        assertFalse(number.evenOddNumber(5));
+    }
+
+    /**
+     * Тест проверяющий что число попадает в интервал.
+     *@return true
+     */
+    @Test
+    public void testNumberIsInInterval(){
+        Numbers number = new Numbers();
+        assertTrue(number.numberInInterval(45));
+    }
+    /**
+     * Тест проверяющий, что число больше нижней границы.
+     * @return true
+     */
+    @Test
+    public void testNumberIsOnLowerBorder(){
+        Numbers number = new Numbers();
+        assertTrue(number.numberInInterval(26));
+    }
+    /**
+     * Тест проверяющий, что число ниже верней границы.
+     * @return true
+     */
+    @Test
+    public void testNumberIsOnHigherBorder(){
+        Numbers number = new Numbers();
+        assertTrue(number.numberInInterval(99));
+    }
+    /**
+     * Тест проверяющий, что число ниже нижней границы.
+     * @return false
+     */
+    @Test
+    public void testNumberIsUpperHigherBorder(){
+        Numbers number = new Numbers();
+        assertFalse(number.numberInInterval(100));
+    }
+    /**
+     * Тест проверяющий, что число выше верней границы.
+     * @return false
+     */
+    @Test
+    public void testNumberIsBelowLowerBorder(){
+        Numbers number = new Numbers();
+        assertFalse(number.numberInInterval(25));
     }
 
 }

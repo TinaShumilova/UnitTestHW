@@ -57,4 +57,7 @@ public class Calculator {
         return purchaseAmount - discount;
     }
 
+    public double computeLengthCircle(int radius) {
+        return 2*radius*Math.PI;
+    }
 }
