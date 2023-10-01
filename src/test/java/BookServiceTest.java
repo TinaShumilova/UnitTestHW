@@ -1,6 +1,3 @@
-package life_cycle_JUnit5;
-
-
 import lv.gb.unittest.hw4.Book;
 import lv.gb.unittest.hw4.BookRepository;
 import lv.gb.unittest.hw4.BookService;
